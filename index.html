@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Lesson 19 - Random Images - Unobtrusively</title>
+
+  <style>
+    body {
+      background-image: url(image5.jpg);
+      background-size: cover;
+    }
+
+    .t {
+      color: white;
+    }
+
+    footer {
+      position: fixed;
+      width: 100%;
+      left: 0;
+      bottom: 0;
+      color: white;
+      text-align: left;
+    }
+  </style>
+  </style>
+
+</head>
+
+
+
+<body onload="handleLoad()">
+  <h1 style="color: white;">Lesson 19 - Random Images - Unobtrusively</h1>
+
+  <p style="color: white;">Following is a random image. To see a new image just reload this page.</p>
+
+  <script>
+    let arrayPictures =
+      ["https://pixabay.com/get/g6750ebee12c5c84b61498740f31d6e0225b1c2dc40b26adec168be2cf59948d0b84ebc62173cc56c263412f60e2e8b11019c1f7021221f268a4829df667b15fb1cda43aa7192e5e1cf6ae4053011f047_1920.jpg",
+        "https://pixabay.com/get/g7d9d53fc496a5c1c7d4b9cd42cda6b72326bbea1ac5f1702d2d818b40f66ad973467fd3626f6dafacc982b013df5bd518989d27f98e63c2c90c9414d01ebd48c341a396407dd02967b1a42248ad48cb2_1920.jpg",
+        "https://pixabay.com/get/g5e4fbd1028166647ab3b7f1d803d71729c514374774104d4ad9a0fe4f3888d43c6446c5eb8c4eae81a56d2670b49d71953a087aa718f018d43538112d955b4819760fa509a6a881018189471632862d2_1920.jpg",
+        "https://pixabay.com/get/g0b93dcb867f00c37870565172e38a2b3109e3c0b63ee6200741f216520fd3ee52478f6fe1e47d0fcfdd80dec19ebeb3efe4b7d0a3424a2f9b41d5dab7015b6382bde8021f48856e6ca2c917d70dca253_1920.jpg",
+        "https://pixabay.com/get/g7af37dd9daa2f097afed96e0b512976f20b2c351e606cdd315a96abe499b60cfc76c0bef86e667b17670c38927da935190abe2fc08033708260fb7b61a8bc07652d011a69fa31a9512915fa31db95dc9_1920.jpg",
+        "https://pixabay.com/get/g7bf012c1be11de5146f5f2f026c7e45ab9960431f2bdf280758ae7b55cb495d421131a3c6c8d6f1728a9713a1ae15ae7a112d5e7efa69dca49b6cc626c699a75fd19291359d6ac6584bd44d80edec2cd_1920.jpg"];
+
+    const handleClick = (e) => {
+      console.log("click")
+      location.reload(true);
+    }
+
+    let body = document.querySelector("body");
+    let image = document.createElement("img");
+
+    const handleLoad = (e) => {
+      console.log("loaded")
+      let random = Math.floor(Math.random() * arrayPictures.length);
+      let newImg = arrayPictures[random];
+      image.setAttribute("src", newImg);
+      image.setAttribute("width", "600");
+      image.setAttribute("height", "600");
+      image.setAttribute("alt", " arrayPictures[" + random + "]");
+      image.style.objectFit = "cover";
+
+      body.appendChild(image);
+    };
+  </script>
+
+  <footer>
+    <a href="http://csnet.southtexascollege.edu/localuser/oguerrer/">Go Back to HOMEPAGE</a>
+    <br>Oscar Guerrero
+  </footer>
+
+</body>
+
+</html>
